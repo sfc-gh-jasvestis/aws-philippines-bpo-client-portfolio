@@ -9,7 +9,6 @@ A leading Philippine BPO manages a ₱4.8 billion client portfolio across 58 ent
 ```mermaid
 flowchart LR
     S3[S3 Data Landing] --> SP[Snowpipe]
-    SP --> RAW[RAW Tables]
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
     DT --> SEARCH[Cortex Search]
