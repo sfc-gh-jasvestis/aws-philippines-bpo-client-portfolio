@@ -116,7 +116,7 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 
 Industry research and Snowflake customer outcomes:
 - **Client retention improvement of 5% increases BPO profitability by 25-95%** — [Bain & Company](https://www.bain.com/insights/the-value-of-online-customer-loyalty/)
-- **Philippines IT-BPM revenue reached $32.5B in 2023 with 8.4% growth** — [IBPAP](https://ibpap.org/industry-facts-and-figures)
+- **Philippines IT-BPM revenue reached $32.5B in 2023 with 8.4% growth** — [IBPAP](https://ibpap.org/)
 - **Proactive account management reduces churn 20-30% in professional services** — [McKinsey B2B](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights)
 - **Open table formats like Iceberg reduce data platform lock-in costs by 40%** — [Snowflake Engineering](https://www.snowflake.com/engineering-blog/)
 
