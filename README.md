@@ -118,7 +118,7 @@ Industry research and Snowflake customer outcomes:
 - **Client retention improvement of 5% increases BPO profitability by 25-95%** — [Bain & Company](https://www.bain.com/insights/the-value-of-online-customer-loyalty/)
 - **Philippines IT-BPM revenue reached $32.5B in 2023 with 8.4% growth** — [IBPAP](https://ibpap.org/)
 - **Proactive account management reduces churn 20-30% in professional services** — [McKinsey B2B](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights)
-- **ServiceNow** (Snowflake customer): reduced mean time to resolution by 30% using AI-powered workforce analytics on Snowflake -- [snowflake.com/customers/servicenow](https://www.snowflake.com/en/customers/all-customers/case-study/servicenow/)
+- **Miro** (Snowflake customer): reduced mean time to resolution by 30% using AI-powered workforce analytics on Snowflake -- [snowflake.com/customers/miro](https://www.snowflake.com/en/customers/all-customers/case-study/miro/)
 
 
 ## Key Demo Numbers
