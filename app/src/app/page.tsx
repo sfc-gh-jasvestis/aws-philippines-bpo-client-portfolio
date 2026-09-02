@@ -32,15 +32,22 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // KPI values come from /api/data, which reads CURATED.KPI_SUMMARY. The literal
+  // stays as a fallback so the card still renders if the API is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Portfolio Revenue" value="₱18.4B" status="neutral" />
-        <KPICard title="Client Retention" value="94%" status="neutral" />
-        <KPICard title="At-Risk Accounts" value="4" status="danger" />
-        <KPICard title="Active Clients" value="87" status="neutral" />
+        <KPICard title="Portfolio Revenue" value={kpiVal('Portfolio Revenue', '₱18.4B')} status="neutral" />
+        <KPICard title="Client Retention" value={kpiVal('Client Retention', '94%')} status="neutral" />
+        <KPICard title="At-Risk Accounts" value={kpiVal('At-Risk Accounts', '4')} status="danger" />
+        <KPICard title="Active Clients" value={kpiVal('Active Clients', '87')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -87,9 +94,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Pipeline Value" value="₱4.2B" />
-        <KPICard title="Cross-Sell Rate" value="28%" />
-        <KPICard title="Avg Contract Length" value="3.2 yrs" />
+        <KPICard title="Pipeline Value" value={kpiVal('Pipeline Value', '₱4.2B')} />
+        <KPICard title="Cross-Sell Rate" value={kpiVal('Cross-Sell Rate', '28%')} />
+        <KPICard title="Avg Contract Length" value={kpiVal('Avg Contract Length', '3.2 yrs')} />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]}
