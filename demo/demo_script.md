@@ -1,108 +1,81 @@
-# Demo Script: Client Portfolio & Revenue Analytics
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake consolidates client revenue, delivery, and satisfaction data into Dynamic Table health scores, exports to Iceberg for cross-platform access, and provides Cortex Agent-powered portfolio intelligence for account managers"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Client Portfolio & Revenue Analytics
 
----
+**Philippines - BPO & IT Services**
+Use case: Client Portfolio Analytics
 
-## Two Personas
+> Philippine BPOs manage multi-billion peso client portfolios — Snowflake builds real-time client health scores with Dynamic Tables, exports to Iceberg for cross-platform reporting, and enables revenue intelligence at scale.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Isabella Sofia Ayala-Zobel** | Chief Revenue Officer | React App (SPCS) | Revenue growth, client retention, upsell pipeline, margin trends, portfolio concentration risk |
-| **Antonio Miguel Sy** | Account Director | Amazon QuickSight | Individual client P&L, contract renewals, scope expansion, delivery health |
+## Why Snowflake
 
----
+Snowflake consolidates client revenue, delivery, and satisfaction data into Dynamic Table health scores, exports to Iceberg for cross-platform access, and provides Cortex Agent-powered portfolio intelligence for account managers
 
-## What's Built
+- **Iceberg Tables for cross-platform client reports** - Only demo exporting BPO client data to open Iceberg format for Athena/Spark consumers
+- **Dynamic Tables for health scores** - Composite health score combining 3 data domains — declarative, always fresh
+- **ML.CLASSIFICATION for churn risk** - Native churn prediction without SageMaker — SQL-based, no MLOps
+- **Portfolio concentration risk analysis** - Revenue dependency alerts — unique to multi-client services business
+- **Philippine BPO enterprise context** - ₱4.8B portfolio with Fortune 500 client relationships and vertical segmentation
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `PH_BPO_CLIENT_PORTFOLIO` |
+| Service | `PH_BPO_CLIENT_PORTFOLIO_APP` |
+| Compute pool | `SEA_DEMOS_PHILIPPINES_POOL` |
+| Dimension table | `RAW.CLIENTS` (20 rows) |
+| Fact table | `RAW.DELIVERY_METRICS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | PHP (₱) |
+
+Regions in play: Metro Manila, Cebu, Davao, Pampanga, Iloilo
+Segments: Telco Client, Banking Client, Retail Client, Healthcare Client
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh PH_BPO_CLIENT_PORTFOLIO
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 6 tables | CLIENTS (58), CONTRACTS (124), REVENUE_TRANSACTIONS (340000), DELIVERY_METRICS (580000), CLIENT_SURVEYS (2400), MARKET_INTELLIGENCE (500) |
-| **CURATED** | 4 Dynamic Tables | CLIENT_HEALTH_SCORE, REVENUE_360, RENEWAL_PIPELINE, PORTFOLIO_CONCENTRATION |
-| **ML** | ML.CLASSIFICATION + ML.FORECAST | Forecasting + anomaly detection |
-| **AI** | COMPLETE, AI_CLASSIFY | Classification + extraction |
-| **Search** | Cortex Search | 500 documents indexed |
-| **Agent** | PORTFOLIO_INTELLIGENCE_AGENT | Semantic View + Search tools |
+| Portfolio Revenue | `₱18.4B` | total across Clients |
+| Client Retention | `94%` | average per event |
+| At-Risk Accounts | `4` | total across Clients |
+| Active Clients | `87` | total across Clients |
+| Pipeline Value | `₱4.2B` | total across Clients |
+| Cross-Sell Rate | `28%` | average per event |
+| Avg Contract Length | `3.2 yrs` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Executive Cockpit
+2. Client Health
+3. Revenue & Portfolio
+4. Ask AI
+5. Architecture & Data
 
-A leading Philippine BPO manages a ₱4.8 billion client portfolio across 58 enterprise clients spanning finance, healthcare, telecom, retail, and technology. Seven clients are deteriorating — three have renewals in 90 days. But client health data lives in 6 disconnected systems. Snowflake unifies delivery, satisfaction, and financial data into a single health score, predicts churn, and exports via Iceberg for organization-wide visibility.
+## Talking points
 
----
+- **₱4.8B** - annual revenue across 58 enterprise clients
+- **7 clients** - below 60 health score (at-risk)
+- **3 renewals** - within 90 days for at-risk clients (₱620M exposure)
+- **16.2%** - revenue concentration in top client (above threshold)
+- **₱340M** - upsell pipeline identified by AI
+- **8.4%** - forecasted revenue growth next quarter
 
-## Script
+## Business impact
 
-### [0:00–0:45] EXECUTIVE COCKPIT
-
-**Show**: Executive Cockpit tab
-
-> "₱4.8 billion annual revenue across 58 enterprise clients and 5 verticals."
-
-**Action**: Point at ₱4.8B revenue KPI
-
-### [0:45–1:30] CLIENT HEALTH
-
-**Show**: Client Health tab
-
-> "Health score combines delivery (40%), satisfaction (35%), and financial (25%) dimensions."
-
-**Action**: Show health score trend for BankCo
-
-### [1:30–2:15] REVENUE & PORTFOLIO
-
-**Show**: Revenue & Portfolio tab
-
-> "ML.FORECAST projects 8.4% revenue growth next quarter — driven by healthcare vertical."
-
-**Action**: Show revenue forecast chart
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Isabella asks: 'Which vertical grew fastest this year?'"
-
-**Action**: Type: 'Which vertical grew fastest?'
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Dynamic Tables build health scores → Iceberg export for cross-platform access."
-
-**Action**: Walk through architecture diagram
-
+- Client retention improvement of 5% increases BPO profitability by 25-95% (Bain & Company)
+- Philippines IT-BPM revenue reached $32.5B in 2023 with 8.4% growth (IBPAP)
+- Proactive account management reduces churn 20-30% in professional services (McKinsey B2B)
+- Open table formats like Iceberg reduce data platform lock-in costs by 40% (Snowflake Engineering)
 
 ---
-
-## Key Demo Differentiators
-
-1. **Iceberg Tables for cross-platform client reports** — Only demo exporting BPO client data to open Iceberg format for Athena/Spark consumers
-2. **Dynamic Tables for health scores** — Composite health score combining 3 data domains — declarative, always fresh
-3. **ML.CLASSIFICATION for churn risk** — Native churn prediction without SageMaker — SQL-based, no MLOps
-4. **Portfolio concentration risk analysis** — Revenue dependency alerts — unique to multi-client services business
-5. **Philippine BPO enterprise context** — ₱4.8B portfolio with Fortune 500 client relationships and vertical segmentation
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM CLIENT_PORTFOLIO.RAW.REVENUE_TRANSACTIONS` → 340000
-- [ ] `SELECT COUNT(*) FROM CLIENT_PORTFOLIO.RAW.DELIVERY_METRICS` → 580000
-- [ ] `SELECT COUNT(DISTINCT CLIENT_ID) FROM CLIENT_PORTFOLIO.CURATED.CLIENT_HEALTH_SCORE WHERE HEALTH_SCORE < 60` → 7
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM CLIENT_PORTFOLIO.ML.CHURN_CLASSIFICATION_RESULTS WHERE CHURN_RISK = 'HIGH'` → >=3
-- [ ] `SELECT COUNT(*) FROM CLIENT_PORTFOLIO.ML.REVENUE_FORECAST_RESULTS` → >0
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM CLIENT_PORTFOLIO.AI.SURVEY_CLASSIFICATION` → 2400
-
+Generated from `generator/demo_specs/aws-philippines-bpo-client-portfolio.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-philippines-bpo-client-portfolio` instead.
