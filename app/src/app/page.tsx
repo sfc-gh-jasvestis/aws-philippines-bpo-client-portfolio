@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="philippines"
+            labels={{ entity: 'Clients', event: 'Delivery Records', alert: 'At-Risk Accounts' }}
             regions={data?.regions}
             markers={[{"label": "Makati", "value": "HQ: 8,400 agents", "color": "blue", "size": "lg"}, {"label": "Cebu", "value": "Site: 4,200 agents", "color": "green", "size": "lg"}, {"label": "Clark", "value": "Site: 2,100 agents", "color": "green", "size": "md"}, {"label": "Davao", "value": "Site: 1,200 agents", "color": "green", "size": "md"}, {"label": "Iloilo", "value": "Site: 800 agents", "color": "amber", "size": "sm"}]}
             routes={[]}
@@ -83,8 +84,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: 'Rank' },
           { key: 'name', header: 'Client' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Health' },
-          { key: 'value', header: 'Revenue (₱M)' },
+          { key: 'm1', header: 'Revenue (₱M)' },
+          { key: 'm2', header: 'Cross Sell Rate' },
+          { key: 'm3', header: 'Contract Length' },
+          { key: 'events', header: 'Delivery Records' },
+          { key: 'alerts', header: 'At-Risk Accounts' },
         ]}
         data={data?.entities || []}
         title="Client Portfolio Health"
