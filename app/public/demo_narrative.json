@@ -1,0 +1,142 @@
+{
+  "title": "Philippines BPO Client Portfolio",
+  "duration": "6 minutes",
+  "thesis": "Snowflake turns daily client account activity from a fictional Philippine BPO provider into escalation and SLA KPIs, 7-day SLA breach risk scores, repeat contact rate anomalies and grounded AI answers, all on one governed platform.",
+  "tabs": [
+    {
+      "id": "executive-cockpit",
+      "persona": {
+        "name": "Maricel Dizon",
+        "role": "Head of Client Portfolio Delivery (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Contacts without escalation, escalations raised, SLA breaches and billed revenue in PHP for 40 fictional client accounts served from Quezon City, Cebu City, Davao City, Iloilo City and Bacolod.",
+        "Every KPI is a numerator over a denominator in a curated dynamic table, so it can be traced back to account-day rows.",
+        "The escalation-type chart shows which escalations miss the SLA and which are always closed within it, such as site connectivity outages."
+      ],
+      "show": [
+        "KPI cards",
+        "Daily escalations",
+        "Escalations by type",
+        "Account table"
+      ],
+      "call_out": "One governed set of client portfolio KPIs, traceable to source rows",
+      "transition": {
+        "next_tab": "predictive",
+        "line": "Which accounts should the quality team watch first?"
+      }
+    },
+    {
+      "id": "predictive",
+      "persona": {
+        "name": "Paolo Villanueva",
+        "role": "Account Quality Analyst (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Snowflake ML classification scores each account's probability of an SLA breach in the next 7 days.",
+        "The holdout line shows precision and recall on the most recent labelled days, against the base rate.",
+        "Anomaly detection flags repeat contact rate outliers per account, and the forecast projects portfolio-wide escalations for 14 days to plan team-lead cover."
+      ],
+      "show": [
+        "Holdout metrics",
+        "Risk by account",
+        "Escalation forecast",
+        "Repeat contact rate anomalies"
+      ],
+      "call_out": "Honest, evaluated ML inside the data platform",
+      "transition": {
+        "next_tab": "planning",
+        "line": "Are our quality controls keeping up?"
+      }
+    },
+    {
+      "id": "planning",
+      "persona": {
+        "name": "Maricel Dizon",
+        "role": "Head of Client Portfolio Delivery (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "QA audit compliance, agent certification coverage and agents still in certification training frame the control gaps.",
+        "QA audit compliance against SLA breaches by account shows where missed calibration audits and SLA breaches move together; it is an association, not proof of cause.",
+        "The action memo drafts three prioritised actions from the KPI, account, escalation-type and risk tables only."
+      ],
+      "show": [
+        "QA audit compliance and certification coverage",
+        "QA audit compliance vs SLA breaches",
+        "Action memo"
+      ],
+      "call_out": "Grounded draft actions, with a human in the loop",
+      "transition": {
+        "next_tab": "live",
+        "line": "What happens when a contact is escalated right now?"
+      }
+    },
+    {
+      "id": "live",
+      "persona": {
+        "name": "Paolo Villanueva",
+        "role": "Account Quality Analyst (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Live interaction events land in RAW.LIVE_INTERACTIONS, from the simulator or from Amazon Data Firehose through Snowpipe.",
+        "The Snowflake alert logs ESCALATED events with an SOP hint and the account's current risk band, then emails the on-call analyst."
+      ],
+      "show": [
+        "Events loaded and lag",
+        "Latest interaction events",
+        "Alert log"
+      ],
+      "call_out": "From escalated contact to account case in one platform",
+      "transition": {
+        "next_tab": "ask-ai",
+        "line": "Now ask the data directly."
+      }
+    },
+    {
+      "id": "ask-ai",
+      "persona": {
+        "name": "Maricel Dizon",
+        "role": "Head of Client Portfolio Delivery (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "The Cortex Agent uses Cortex Analyst over the semantic view for metrics, and Cortex Search over 14 synthetic escalation handling SOPs.",
+        "Each answer shows the generated SQL and the SOPs it cited."
+      ],
+      "show": [
+        "Ask a sample question",
+        "Generated SQL",
+        "SOP citations"
+      ],
+      "call_out": "Natural-language answers you can audit",
+      "transition": {
+        "next_tab": "architecture",
+        "line": "Here is how it is built."
+      }
+    },
+    {
+      "id": "architecture",
+      "persona": {
+        "name": "Maricel Dizon",
+        "role": "Head of Client Portfolio Delivery (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Two builds share one core: Snowflake only, or AWS + Snowflake (Data Firehose, Bedrock, QuickSight and Amazon Q).",
+        "Everything shown is synthetic demo data for a fictional BPO provider, rebuilt reproducibly from the repo."
+      ],
+      "show": [
+        "Both architecture diagrams"
+      ],
+      "call_out": "One governed core, with an optional AWS edge",
+      "transition": {
+        "next_tab": "",
+        "line": "Questions?"
+      }
+    }
+  ]
+}
